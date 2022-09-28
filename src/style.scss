@@ -1,0 +1,170 @@
+/* suppression marge auto sur tout le doc */
+* {
+  margin: 0
+}
+
+$color-alpha: #9D5353;
+$color-bravo: #DACC96;
+$color-charlie: #632626;
+
+@font-face {
+  font-family: "playing_city";
+  src: url("assets/fonts/playing_city.otf");
+  font-family: "Black Brush";
+  src: url("assets/fonts/Black\ Brush.otf") format("otf"),
+       url("assets/fonts/Black\ Brush.ttf") format ("ttf");
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+body {
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.background-image {
+  filter: blur(0.150rem);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url(assets/img/hd-wallpaper-g616d208ea_1920.jpg);
+}
+
+header {
+  position: relative;
+
+  /* répéter propriété box-sizing même si indiquée dans body. = spécificité header */
+  h1 {
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+    font-family: "playing_city", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 4rem;
+    text-shadow: 5px 5px 5px $color-bravo;
+    word-spacing: 2rem;
+    color: $color-charlie;
+  }
+}
+
+.container {
+  position: relative;
+  /* pour avoir l'image de fond sur tout l'écran */
+  height: calc(100vh - 6.313rem);
+
+  .form-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+  }
+
+  form {
+    display: flex;
+    width: 30%;
+  }
+
+  .main-input {
+    border: 1px solid $color-bravo;
+    border-radius: 10px;
+    background-color: $color-bravo;
+    color: $color-charlie;
+    padding: 1rem;
+    width: 100%;
+    font-family: "Black Brush", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.2rem;
+  }
+
+  .main-input:focus {
+    outline: none;
+    border: 1px solid $color-alpha;
+  }
+
+  /* au besoin je travaille en px et je convertis ensuite tout en rem pour meilleur responsive */
+
+  button {
+    border: 1px solid $color-alpha;
+    border-radius: 10px;
+    background-color: $color-alpha;
+    color: $color-bravo;
+    font-size: 2rem;
+    height: 3.938rem;
+    width: 3.938rem;
+    cursor: pointer;
+  }
+
+  ul {
+    margin-top: 2rem;
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .check {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    border-radius: 30%;
+    border: 1px solid $color-bravo;
+    background-color: $color-bravo;
+    -webkit-appearance: none;
+    margin-left: 0.5rem;
+  }
+
+  .todo-input {
+    font-family: "Black Brush", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border: 1px solid $color-alpha;
+    border-radius: 0.625rem;
+    background-color: $color-alpha;
+    color: $color-bravo;
+    padding: 0.5rem;
+  }
+
+  .todo-input:focus {
+    outline: none;
+    border: 1px solid $color-bravo;
+  }
+
+
+  li.checked input.todo-input {
+    text-decoration: line-through;
+    color: $color-charlie;
+  }
+
+  li.checked input.check {
+    background-color: $color-charlie;
+  }
+
+  .fa-trash-can,
+  .fa-floppy-disk {
+    margin-left: 0.5rem;
+    color: $color-charlie;
+    cursor: pointer;
+  }
+}
+
+/* Règles applicables sur écrans, quand largeur fait au max 425px  */
+@media screen and (max-width: 425px) {
+  header h1 {
+    word-spacing: 1rem;
+  }
+
+  .container form {
+    width: 50%;
+  }
+
+  .container .search-input {
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 0.9rem;
+  }
+}
