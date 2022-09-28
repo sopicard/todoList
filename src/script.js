@@ -1,6 +1,7 @@
 window.onload = init;
 let todoList = [];
 
+//Initialization of the page, loading the todos first then listen to events (clicks)
 function init() {
   loadTodos();
   listenFormEvents();
@@ -34,7 +35,7 @@ function loadTodos() {
   });
 }
 
-// When the page is loaded, a method to listen events on the form. Only the clearly explained event will be managed. The default ones (the others) will be ignored.
+//When the page is loaded, a method to listen events on the form. Only the clearly explained event will be managed. The default ones (the others) will be ignored (preventDefault).
 function listenFormEvents() {
   document.querySelector('form').addEventListener('submit', event => {
     event.preventDefault();
@@ -42,8 +43,9 @@ function listenFormEvents() {
   });
 }
 
-// QuerySelector method on the document interface allows to target the form text area ('form input')
-// Same with list and items
+//QuerySelector method on the document interface allows to target the form text area ('form input')
+//Same with list and items
+//Dynamic creation of the new todo into this list and listen to events (clicks)
 function addTodo() {
   const todo = document.querySelector('form input');
 
@@ -81,14 +83,17 @@ function addTodo() {
 function todoModify() {
 }
 
-//To target the element by name, .target returns the element concerned by the event. Here we target the element immediately before the one specified (in the children list) which is the value
 function todoChecked(event) {
+  //Update of the todolist with the new checked todo
+  //To target the element by name, .target returns the element concerned by the event. Here we target the element immediately before the one specified (in the children list) which is the value
   const elementName = event.target.previousElementSibling.value;
-  event.target.parentNode.classList.toggle('checked');
-
   const todo = todoList.find(item => item.name === elementName);
   todo.checked = !todo.checked;
 
+  //Add the checked class to the parent element of the checkbox
+  event.target.parentNode.classList.toggle('checked');
+
+  //Save to local storage
   localStorage.setItem('todoList', JSON.stringify(todoList));
 }
 
@@ -97,8 +102,9 @@ function todoRemoved(event) {
   const elementName = event.target.parentNode.querySelector('.todo-input').value;
   const todoIndex = todoList.findIndex(item => item.name === elementName);
 
-  event.target.parentNode.remove();
   todoList.splice(todoIndex, 1);
+
+  event.target.parentNode.remove();
 
   localStorage.setItem('todoList', JSON.stringify(todoList));
 }

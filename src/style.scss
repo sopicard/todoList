@@ -19,7 +19,13 @@ $color-charlie: #632626;
 body {
   padding: 0;
   box-sizing: border-box;
+  font-family: "playing_city", Impact, sans-serif;
   font-size: 16px;
+
+  input {
+    font-family: "Black Brush", Impact, sans-serif;
+    font-size: 16px;
+  }
 }
 
 .background-image {
@@ -38,7 +44,7 @@ header {
     width: 100%;
     padding: 2rem;
     box-sizing: border-box;
-    font-family: "playing_city", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: "playing_city", Impact, sans-serif;
     text-align: center;
     text-transform: uppercase;
     font-size: 4rem;
@@ -72,7 +78,6 @@ header {
     color: $color-charlie;
     padding: 1rem;
     width: 100%;
-    font-family: "Black Brush", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 1.2rem;
   }
 
@@ -121,7 +126,6 @@ header {
   }
 
   .todo-input {
-    font-family: "Black Brush", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     border: 1px solid $color-alpha;
     border-radius: 0.625rem;
     background-color: $color-alpha;
